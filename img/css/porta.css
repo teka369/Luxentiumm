@@ -1,0 +1,244 @@
+/* ==========================================================================
+   1. RESET & VARIABLES GLOBALES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+:root {
+    --color-fondo: #0f0f0f;
+    --color-secundario: #111111;
+    --color-tarjeta: #1a1a1a;
+    --color-naranja: #ff7a00;
+    --color-naranja-hover: #ff9500;
+    --color-texto-principal: #ffffff;
+    --color-texto-secundario: #bbbbbb;
+    --transicion: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Consistencia con index */
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVEGACIÓN (Igual al Index)
+   ========================================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 100px; /* Ajustado para ser idéntico al index */
+    background-color: #111;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 150px; /* Tamaño aumentado como en el index */
+    height: auto;
+}
+
+.logo h1 {
+    font-size: 30px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--color-naranja);
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 25px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-naranja);
+}
+
+/* El botón de contacto del Header */
+header .btn-contacto {
+    background-color: var(--color-naranja);
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+header .btn-contacto:hover {
+    background-color: var(--color-naranja-hover);
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   3. SECCIÓN PRINCIPAL PORTAFOLIO
+   ========================================================================== */
+.main-portafolio {
+    padding: 80px 100px;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 70px;
+    letter-spacing: 4px;
+    font-weight: 900;
+}
+
+.titulo-seccion span {
+    color: var(--color-naranja);
+}
+
+/* ==========================================================================
+   4. GRID DE PROYECTOS & TARJETAS
+   ========================================================================== */
+.grid-portafolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.card-proyecto {
+    background-color: var(--color-tarjeta);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 122, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transicion);
+    height: 100%;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.card-proyecto video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    border-bottom: 4px solid var(--color-naranja);
+    transition: 0.5s;
+    .card-proyecto video {
+    /* ... lo que ya tenías ... */
+    will-change: transform; /* Le avisa al navegador que este elemento se animará */
+    background-color: #000; /* Fondo negro mientras carga */
+}
+}
+
+.info-proyecto {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-proyecto h3 {
+    color: var(--color-naranja);
+    font-size: 24px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-proyecto p {
+    color: var(--color-texto-secundario);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Hover Tarjetas */
+.card-proyecto:hover {
+    transform: translateY(-15px);
+    border-color: var(--color-naranja);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 122, 0, 0.1);
+}
+
+.card-proyecto:hover video {
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   5. BARRIDO DRAMÁTICO
+   ========================================================================== */
+.barrido-overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #ff7a00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.barrido-overlay.active {
+    left: 0;
+}
+
+.logo-barrido {
+    font-size: 5rem;
+    color: white;
+    letter-spacing: 15px;
+    font-weight: bold;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+    transition-delay: 0.3s;
+}
+
+.logo-barrido span {
+    color: #111;
+}
+
+.barrido-overlay.active .logo-barrido {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDAD & ANIMACIONES
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1200px) {
+    header { padding: 12px 50px; }
+    .main-portafolio { padding: 60px 50px; }
+}
+
+@media (max-width: 900px) {
+    header { flex-direction: column; padding: 20px; gap: 15px; }
+    nav a { margin: 0 10px; font-size: 16px; }
+    .logo img { width: 120px; }
+    .grid-portafolio { grid-template-columns: 1fr; }
+    .titulo-seccion { font-size: 32px; }
+}

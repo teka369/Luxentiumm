@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Luxentium</title>
+    <link rel="icon" href="/img/icon/icon.png">
+    <link rel="stylesheet" href="/img/css/style.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    
+</head>
+<body>
+    
+
+    <header>
+    <div class="logo">
+        <img src="/img/logo/logo.png" alt="Logo">
+        <h1>LUX<span>ENTIUM</span></h1>
+    </div>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-menu">
+        <a href="index.html">Inicio</a>
+        <a href="/img/html/servicios.html">Nosotros</a>
+        <a href="./img/html/servicios.html">Servicios</a>
+        <a href="./img/portafolio/portafolio.html">Proyectos</a>
+        <a href="#" class="nav-btn-mobile">Contacto</a>
+    </nav>
+
+    
+
+    <div class="header-btns">
+        <a href="#" class="btn-contacto">Contacto</a>
+    </div>
+    </header>
+
+    <main class="hero-container">
+        <div class="hero-text">
+               <h1>Luxentium <span>Developing</span></h1>
+               <p>Soluciones digitales de alto impacto. Creamos el futuro de tu presencia web con tecnologías avanzadas y diseños innovadores.</p>
+               <div class="hero-btns">
+                   <a href="#" class="btn-contacto">Cotizar Proyecto</a>
+                   <a href="./img/portafolio/portafolio.html" class="btn-secundario">Saber Más</a>
+               </div>
+        </div>
+        <div class="hero-image">
+            <img src="/img/logo/desarrollo.png" alt="Desarrollo Web Luxentium">
+        </div>
+    </main>
+
+
+
+
+    <div class="barrido-overlay" id="overlay">
+        <div class="barrido-content">
+            <h1 class="logo-barrido">LUX<span>ENTIUM</span></h1>
+        </div>
+    </div>
+    <script>
+        document.querySelector('a[href*="portafolio.html"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            const overlay = document.getElementById('overlay');
+            
+            overlay.classList.add('active'); // Inicia el barrido
+        
+            setTimeout(() => {
+                window.location.href = href;
+            }, 1000); // Tiempo ajustado para fluidez
+        });
+    </script>
+    <section class="pilares-section">
+        <div class="pilares-header">
+            <h2>¿Por qué trabajar con <span>Luxentium</span>?</h2>
+            <p>No solo entregamos código; construimos herramientas diseñadas para que tu negocio destaque en un entorno digital competitivo. Nos enfocamos en los tres puntos clave que garantizan resultados.</p>
+        </div>
+      
+        <div class="pilares-container">
+            <div class="pilar-card">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                <h3>Sitios Rápidos</h3>
+                <p>Tu web cargará en un parpadeo. Nadie espera una página lenta; nos aseguramos de que la tuya vuele y retenga a tus clientes.</p>
+            </div>
+          
+            <div class="pilar-card">
+                <span class="material-symbols-outlined">devices</span>
+                <h3>Adaptabilidad Total</h3>
+                <p>Desde smartphones hasta pantallas de escritorio; tu marca siempre mantendrá una apariencia profesional, organizada y fluida.</p>
+            </div>
+          
+            <div class="pilar-card">
+                <span class="material-symbols-outlined">Ads_Click</span>
+                <h3>Fácil de Usar</h3>
+                <p>Diseñamos pensando en tus usuarios. Interfaces intuitivas que guían al cliente hacia el objetivo con el menor esfuerzo posible.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        
+    </footer>
+
+
+    <script>
+       const menu = document.querySelector('#mobile-menu');
+const menuLinks = document.querySelector('.nav-menu');
+
+menu.addEventListener('click', function() {
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        menu.classList.remove('is-active');
+        menuLinks.classList.remove('active');
+    });
+});
+    </script>
+</body>

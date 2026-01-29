@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Luxentium</title>
+    <link rel="icon" href="/img/icon/icon.png">
+    <link rel="stylesheet" href="/img/css/porta.css">
+</head>
+<body>
+    <div class="barrido-overlay" id="overlay">
+        <div class="barrido-content">
+            <h1 class="logo-barrido">LUX<span>ENTIUM</span></h1>
+        </div>
+    </div>
+    <header>
+    <div class="logo">
+        <img src="/img/logo/logo.png" alt="Logo">
+        <h1>LUX<span>ENTIUM</span></h1>
+    </div>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-menu">
+        <a href="index.html">Inicio</a>
+        <a href="/img/html/servicios.html">Nosotros</a>
+        <a href="./img/html/servicios.html">Servicios</a>
+        <a href="./img/portafolio/portafolio.html">Proyectos</a>
+        <a href="#" class="nav-btn-mobile">Contacto</a>
+    </nav>
+
+    
+
+    <div class="header-btns">
+        <a href="#" class="btn-contacto">Contacto</a>
+    </div>
+    </header>
+
+    <main class="main-portafolio">
+        <h2 class="titulo-seccion">PORTAFOLIO LUX<span>ENTIUM</span></h2>
+    
+      
+        <div class="grid-portafolio">
+            <div class="card-proyecto">
+                <video muted loading="lazy"controls src="/img/portafolio/1.mp4"></video>
+                <div class="info-proyecto">
+                    <h3>Desarrollo E-commerce</h3>
+                    <p>Web de alto rendimiento</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <video muted controls loading="lazy" src="/img/portafolio/2.mp4"></video>
+                <div class="info-proyecto">
+                    <h3>Plataforma Digital</h3>
+                    <p>Experiencia de usuario premium</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <video muted controls loading="lazy" src="/img/portafolio/3.mp4"></video>
+                <div class="info-proyecto">
+                    <h3>Diseño UX/UI</h3>
+                    <p>Interfaces modernas y fluidas</p>
+                </div>
+            </div>
+
+            <div class="card-proyecto">
+                <video muted controls loading="lazy" src="/img/portafolio/4.mp4"></video>
+                <div class="info-proyecto">
+                    <h3>Web ecomerce</h3>
+                    <p>Interfaces modernas y fluidas</p>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('overlay');
+
+            // Forzamos que el overlay esté visible e inmediatamente inicie la salida
+            overlay.style.left = "0"; 
+
+            // Pequeño delay para que el navegador registre el cambio y anime hacia afuera
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    overlay.style.transition = "left 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)";
+                    overlay.style.left = "100%";
+                }, 50); 
+            });
+        });
+
+        const videos = document.querySelectorAll('video');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.5 }); // Se activa cuando se ve el 50% del video
+
+        videos.forEach(video => observer.observe(video));
+
+
+
+
+
+
+        
+       const menu = document.querySelector('#mobile-menu');
+const menuLinks = document.querySelector('.nav-menu');
+
+menu.addEventListener('click', function() {
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        menu.classList.remove('is-active');
+        menuLinks.classList.remove('active');
+    });
+});
+    
+
+
+    </script>
+</body>
+</html>

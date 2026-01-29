@@ -113,6 +113,90 @@ nav a:hover {
     color: #ff7a00;
 }
 
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+/* Ocultar botón de contacto móvil en escritorio */
+.nav-btn-mobile {
+    display: none;
+}
+
+/* ===== HAMBURGUESA ESTILOS ===== */
+.menu-toggle {
+    display: none; /* Escondido en PC */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+/* ===== RESPONSIVE (MÓVIL) ===== */
+@media (max-width: 968px) {
+    .menu-toggle {
+        display: flex; /* Aparece en móviles */
+        z-index: 1001;
+    }
+
+    /* Animación X al abrir */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Escondido a la izquierda */
+        top: 0;
+        flex-direction: column;
+        background-color: rgba(15, 15, 15, 0.98);
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        left: 0; /* Entra a la pantalla */
+    }
+
+    .nav-menu a {
+        margin: 20px 0;
+        font-size: 24px;
+    }
+
+    .header-btns {
+        display: none; /* Escondemos los botones de la derecha en móvil */
+    }
+
+    .nav-btn-mobile {
+        display: block;
+        background-color: #ff7a00;
+        padding: 10px 25px;
+        border-radius: 5px;
+    }
+    
+    .logo img { width: 120px; }
+}
+
 /* ===== BUTTONS ===== */
 .btn-contacto {
     background-color: #ff7a00;
